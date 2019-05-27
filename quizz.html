@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jquery Quizz</title>
+	<style type="text/css">
+		body{background-color: #232323;}
+		#front{background-color: yellow; color: white;}
+		#front h1{margin: 35%; font-weight: bolder; color: #232323; width: 30%; height: 3em;}
+		.ask{ background-color: lightblue; margin: 25%; color: #232323;  }
+		button{background-color: purple; color: white; margin-left: 40%; margin-right: 40%; margin-bottom: 10%; width: 20%; height: 3em;}
+		h1, h2, ul, li{margin:25%; padding: 5%}		
+	</style>
+</head>
+<body>
+	<div id="front">
+		<h1>Jquery Quizz</h1>
+
+	<button id="start">Start Quizz</button>
+
+	</div>
+
+	<div class="ask" id="question" >
+		<h2>Pregunta 1</h2>
+		<ul>
+			<li class="1">Respuesta 1</li>
+			<li class="2">Respuesta 2</li>
+			<li class="3">Respuesta 3</li>			
+		</ul>
+		<button id="goTo2">Next</button>
+	</div>
+
+	<div class="ask" id="question2" >
+		<h2>Pregunta 2</h2>
+		<ul>
+			<li class="1">Respuesta 1</li>
+			<li class="2">Respuesta 2</li>
+			<li class="3">Respuesta 3</li>
+		</ul>
+		<button id="goTo3">Next</button>
+	</div>
+	
+	<div class="ask" id="question3" >
+		<h2>Pregunta 3</h2>
+		<ul>
+			<li class="1">Respuesta 1</li>
+			<li class="2">Respuesta 2</li>
+			<li class="3">Respuesta 3</li>
+		</ul>
+		<button id="finish">Finish Test</button>
+	
+	</div >
+
+	<div class="ask" id="testResults" >
+		<h2>Your Score Is</h2>
+		<h1 id="Results"></h1>		
+
+	</div>
+
+
+<script type="text/javascript" src="jquery-3.3.1.js"></script>
+
+<script type="text/javascript">
+	
+	
+	$(document).ready(function(){
+var total = 0;
+
+$(".ask").hide();
+
+	  $("#start").on("click", function() {
+	  	$("#front").fadeOut();
+  		$("#question").show().fadeIn();
+   		});
+
+	   $("#goTo2").on("click", function() {
+	  	$("#question").fadeOut();
+  		$("#question2").show().fadeIn();
+   		});
+
+   	   $("#goTo3").on("click", function() {
+	  	$("#question2").fadeOut();
+  		$("#question3").show().fadeIn();
+   		});
+
+   	   $("#finish").on("click", function() {
+	  	$("#question3").fadeOut();
+  		$("#testResults").show().fadeIn();
+  		$('#Results').text("Total Points " + total);
+   		});
+
+   		$(".1").on("click", function() {
+	  	total +=1;
+	  	$(this).css("background-color","lightgreen");
+   		});
+
+   		$(".2").on("click", function() {
+	  	total +=2;
+	  	$(this).css("background-color","lightgreen");
+   		});
+
+   		$(".3").on("click", function() {
+	  	total +=3;
+	  	$(this).css("background-color","lightgreen");
+   		});
+	});
+</script>
+</body>
+</html>
